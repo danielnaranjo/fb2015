@@ -7,5 +7,5 @@ plugins/
 resources/
 *.png
 *.psd
-MyCloudCode/
-www/js/parse-keys.js
+/MyCloudCode/
+/www/js/parse-keys.js
