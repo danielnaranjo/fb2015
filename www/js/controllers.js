@@ -436,7 +436,7 @@ angular.module('Klasy.controllers', [])
         //Something went wrong!
     });
     
-    ParseServices.getByTerm('Items', "approved", true, 0, 2).then(function(response) {
+    ParseServices.getByTerm('Items', "approved", true, 0, 6).then(function(response) {
         
         for (var i = 0; i < response.length; i++) {
             $scope.newestItems.push({
