@@ -5,15 +5,15 @@
             <button class="button button-clear" ng-click="myGoBack()"><i class="icon ion-ios-arrow-back"></i></button>
         </div>
         <h1 class="title logo">{{item.name}}</h1>
-        <div class="buttons">
+        <!-- <div class="buttons">
             <a class="button button-clear" ng-click="itemDetails()"><i class="icon ion-ios-information"></i></a>
-        </div>
+        </div> -->
     </ion-header-bar>
     
     <ion-content ng-repeat="user in Submitter">
 
         <div class="itemimgHolder">            
-            <div class="itemPrice"><span class="currencySign">$</span> {{item.price}}</div>
+            <div class="itemPrice" ng-show="item.price>0"><span class="currencySign">$</span> {{item.price}}</div>
             <img src="{{item.picture}}" width="100%" />
         </div>
 
@@ -53,6 +53,19 @@
             </a>
             
         </span>
+
+        <div class="itemDetailsBox">
+          <div class="back-5 detailsField center">
+                <h3>{{item.name}}</h3>
+          </div>
+          <div class="back-7 detailsField center">
+                <h4>{{item.location}}</h4>
+          </div>
+          <div class="back-8 detailsField center">
+              <p>{{item.description}}</p>
+          </div>
+      </div>
+      <!-- details -->
         
     </ion-content>
     
