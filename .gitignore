@@ -5,7 +5,9 @@ node_modules/*
 platforms/*
 plugins/*
 resources/*
+/MyCloudCode/**/*
+/www/js/parse-keys.js
+
+.DS_Store
 *.png
 *.psd
-MyCloudCode/*
-www/js/parse-keys.js
