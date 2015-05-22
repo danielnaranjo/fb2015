@@ -45,7 +45,7 @@
             <a ng-href="tel:{{user.phone}}" class="button  back-7 ">
                 <i class="icon ion-ios-telephone-outline"></i>
             </a>
-            <a ng-href="mailto:{{user.email}}?subject=Classy - New message for {{item.name}}" class="button  back-8 ">
+            <a ng-href="mailto:{{user.email}}?subject=FindBy - New message for {{item.name}}" class="button  back-8 ">
                 <i class="icon ion-ios-email-outline"></i>
             </a>
             <a ng-hide="(item.lat == 0 && item.lon == 0)" ng-click="itemMap()" class="button back-9 ">
@@ -58,11 +58,11 @@
           <div class="back-5 detailsField center">
                 <h3>{{item.name}}</h3>
           </div>
-          <div class="back-7 detailsField center">
-                <h4>{{item.location}}</h4>
-          </div>
           <div class="back-8 detailsField center">
               <p>{{item.description}}</p>
+          </div>
+          <div class="back-7 detailsField center">
+                <h4>{{item.location}}</h4>
           </div>
       </div>
       <!-- details -->

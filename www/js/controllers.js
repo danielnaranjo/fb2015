@@ -264,7 +264,7 @@ angular.module('Klasy.controllers', [])
     
     $rootScope.searchItemIDs = [];
     $scope.page = 0;
-    $scope.pagenext = 6;
+    $scope.pagenext = 12; // default = 6 items
     
      $ionicLoading.show({
       template: 'Looking for listings...'
@@ -381,13 +381,16 @@ angular.module('Klasy.controllers', [])
   $scope.nextSlide = function() {
     $ionicSlideBoxDelegate.next();
   }
+  $scope.previousSlide = function() {
+    $ionicSlideBoxDelegate.previous();
+  }
   $scope.gotoHome = function() {
     $state.transitionTo("app.home");
   }
 })
 
 
-.controller('HomeCtrl', function($scope, $ionicLoading, ParseServices) {
+.controller('HomeCtrl', function($scope, $ionicLoading, ParseServices, $window, $timeout) {
     $ionicLoading.show({
       template: 'Loading...'
     });
@@ -455,6 +458,13 @@ angular.module('Klasy.controllers', [])
     },function(error){
         //Something went wrong!
     });
+
+    // add refresh()
+    $scope.doRefresh = function () {
+        $window.location.reload();
+        // $route.reload();
+    };
+    //
 })
 
 
