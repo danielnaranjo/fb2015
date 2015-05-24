@@ -79,7 +79,7 @@
                 </div>
             </div>
             
-            <div class="row" ng-show="!currentUser.email">
+            <div class="row" ng-show="!currentUser.email" ng-init="getLocation()"><!-- get automate by defaul -->
                 <div class="col">
                     
                     <label class="item item-input item-floating-label">
@@ -90,7 +90,7 @@
                             </span>
                             </label>
                     
-                    <a class="button button-clear" ng-click="getLocation()">
+                    <a class="button button-clear" ng-click="getLocation()" ng-hide="item.location"><!-- show if we cant get it -->
                         <i class="icon ion-ios-navigate-outline"></i>
                     </a>
                     

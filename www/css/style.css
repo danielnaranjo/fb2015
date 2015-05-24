@@ -34,11 +34,25 @@ a {text-decoration: none; color: inherit;}
 
 .modal { background-color: rgba(255,255,255,.9) !important;}
 
-.bar-header .button.button-clear .ion-ios-plus:before, .bar-header .button.button-clear.ion-ios-plus:before, .bar-header .button.button-clear .ion-map:before, .bar-header .button.button-clear.ion-map:before, .bar-header .button.button-clear .ion-ios-information:before, .bar-header .button.button-clear.ion-ios-information:before { font-size: 45px; margin-left: 20px; margin-top: 10px; color: #4DD0E1;}
+.bar-header .button.button-clear .ion-ios-plus:before, .bar-header .button.button-clear.ion-ios-plus:before, .bar-header .button.button-clear .ion-map:before, .bar-header .button.button-clear.ion-map:before, .bar-header .button.button-clear .ion-ios-information:before, .bar-header .button.button-clear.ion-ios-information:before {
+	font-size: 45px;
+	margin-left: 20px;
+	margin-top: 10px;
+	color: #4FC3F7;
+}
 
-.bar-header .button.button-clear .ion-search:before, .bar-header .button.button-clear.ion-search:before { font-size: 45px; margin-right: 20px; margin-top: 10px; color: #4DD0E1;}
+.bar-header .button.button-clear .ion-search:before, .bar-header .button.button-clear.ion-search:before {
+	font-size: 45px;
+	margin-right: 20px;
+	margin-top: 10px;color: #4FC3F7;
+}
 
-.bar-footer .button.button-clear .ion-ios-plus:before, .bar-footer .button.button-clear.ion-ios-plus:before, .bar-footer .button.button-clear .ion-ios-information:before, .bar-footer .button.button-clear.ion-ios-information:before { font-size: 45px; margin-right: 20px; margin-top: -10px; color: #4DD0E1;}
+.bar-footer .button.button-clear .ion-ios-plus:before, .bar-footer .button.button-clear.ion-ios-plus:before, .bar-footer .button.button-clear .ion-ios-information:before, .bar-footer .button.button-clear.ion-ios-information:before { 
+	font-size: 45px; 
+	margin-right: 20px; 
+	margin-top: -10px; 
+	color: #4FC3F7; /*#4DD0E1*/
+}
 
 
 .pane { background: #ECEFF1 ;}

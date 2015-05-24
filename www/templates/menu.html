@@ -36,29 +36,35 @@
           <a ng-show="currentUser" href="#/app/useritems" class="button button-clear logo" nav-clear menu-close>
                 <i class="icon ion-ios-pricetags-outline"></i>
               <p class="smallText">my ads</p>
-            </a>
+          </a>
           <a ng-show="currentUser" href="#/app/usercomments" class="button button-clear logo" nav-clear menu-close>
-                <i class="icon ion-ios-chatboxes-outline"></i>
-              <p class="smallText">messages</p>
-            </a>
+              <i class="icon ion-ios-chatboxes-outline"></i>
+            <p class="smallText">messages</p>
+          </a>
           <a ng-show="currentUser" href="#/app/settings" class="button button-clear logo" nav-clear menu-close>
-                <i class="icon ion-ios-settings"></i>
-              <p class="smallText">settings</p>
-            </a>
-          <a href="#/app/help" class="button button-clear logo" nav-clear menu-close>
-                <i class="icon ion-ios-help-outline"></i>
-              <p class="smallText">help</p>
-            </a>
-
-          <a ng-show="currentUser.get('coords')" href="#/app/nearme" ng-show="currentUser" class="button button-clear logo" nav-clear menu-close>
-                <i class="icon ion-ios-location-outline"></i>
-              <p class="smallText">near me</p>
-            </a>
+              <i class="icon ion-ios-settings"></i>
+            <p class="smallText">settings</p>
+          </a>
           
-            <a ng-click="doLogout()" ng-show="currentUser" class="button button-clear logo" nav-clear menu-close>
-                <i class="icon ion-log-out"></i>
-                <p class="smallText">log out</p>
-            </a>
+          <a ng-show="currentUser.get('coords')" href="#/app/nearme" ng-show="currentUser" class="button button-clear logo" nav-clear menu-close>
+              <i class="icon ion-ios-location-outline"></i>
+            <p class="smallText">near me</p>
+          </a>
+
+          <a ng-click="terms()" class="button button-clear logo" nav-clear menu-close>
+              <i class="icon ion-ios-paper-outline"></i>
+              <p class="smallText">terms of use</p>
+          </a>
+
+          <a href="#/app/help" class="button button-clear logo" nav-clear menu-close>
+              <i class="icon ion-ios-help-outline"></i>
+            <p class="smallText">help</p>
+          </a>
+
+          <a ng-click="doLogout()" ng-show="currentUser" class="button button-clear logo" nav-clear menu-close>
+            <i class="icon ion-log-out"></i>
+            <p class="smallText">log out</p>
+          </a>
 
         </div>
     </ion-content>

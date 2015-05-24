@@ -20,14 +20,14 @@
     </form>
       
    
-  <div class="list" ng-init="getComments()">
-    <a class="item item-avatar"  ng-repeat="comment in Comments">
+  <div class="list" ng-init="getComments()" can-swipe="true">
+    <a class="item item-avatar"  ng-repeat="comment in Comments" on-swipe-left="onSwipeLeft()" >
             <img src="{{comment.userAvatar}}" ng-show="comment.userAvatar">
             <img src="../img/profile.png" ng-hide="comment.userAvatar">
             <h2>{{comment.userEmail | limitTo:7}}</h2>
             <p>{{comment.comment}}</p>
     </a>
-</div>
+  </div>
           
   </ion-content>
 </ion-modal-view>

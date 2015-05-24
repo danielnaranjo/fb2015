@@ -7,7 +7,21 @@ angular.module('Klasy.controllers', [])
                 $rootScope.currentUser.email = Parse.User.current().get('email');
             }, 1000);
             
-        
+ //// Terms Modal ///
+// Create the terms modal
+$ionicModal.fromTemplateUrl('templates/terms.html', {
+  scope: $scope
+}).then(function(modal) {
+  $scope.termsModal = modal;
+});
+// Triggered in the terms modal to close it
+$scope.closeTerms = function() {
+  $scope.termsModal.hide();
+};
+// Open the terms modal
+$scope.terms = function() {
+  $scope.termsModal.show();
+};       
             
             
   // Form data for the login and reset password modal (& search)
@@ -462,7 +476,7 @@ angular.module('Klasy.controllers', [])
     // add refresh()
     $scope.doRefresh = function () {
         $window.location.reload();
-        // $route.reload();
+        console.log('refresh');
     };
     //
 })
@@ -648,7 +662,7 @@ $scope.getItemDetails = function() {
     
     
     
-    //// Details Modal ///
+  //// Details Modal ///
   // Create the modal
   $ionicModal.fromTemplateUrl('templates/itemDetails.html', {
     scope: $scope
@@ -665,7 +679,77 @@ $scope.getItemDetails = function() {
   $scope.itemDetails = function() {
     $scope.detailsModal.show();
   };
-    
+//////////////////////////////////////////////
+
+$scope.showAlert = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Thanks for using FindBy',
+     template: 'Mention you found this with FindBy'
+   });
+   alertPopup.then(function(res) {
+     //console.log('Thank you for not eating my delicious ice cream cone');
+   });
+ };
+
+//////////////////////////////////////////////    
+// $scope.itemReport = function() {
+//     console.log('stateParams.id:',$stateParams.id);
+// // Create a pointer to an object of class Point with listing id.
+//       var Point = Parse.Object.extend("Items");
+//       var point = new Point();
+//       point.id = $stateParams.id;
+// }
+// // Set a new value on quantity
+// point.set("reported", true);
+// // Save
+// point.save(null, {
+//   success: function(point) {
+//     // Saved successfully.
+//     $ionicPopup.alert({
+//                       title: 'Thank you!',
+//                       template: 'We will review this listing.'
+//                       });
+//   },
+//   error: function(point, error) {
+//     // The save failed.
+//     // error is a Parse.Error with an error code and description.
+//   }
+// });
+$scope.itemReport = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: '<strong>Report this listing</strong>',
+     template: 'Are you sure you want to flag this listing?'
+   });
+   confirmPopup.then(function(res) {
+     if(res) {
+        console.log('You are sure');
+//
+        // // Create a pointer to an object of class Point with listing id.
+        // var Point = Parse.Object.extend("Items");
+        // var point = new Point();
+        // point.id = $stateParams.id;
+        // // Set a new value on quantity
+        // point.set("reported", true);
+        // // Save
+        // point.save(null, {
+        //   success: function(point) {
+        //     // Saved successfully.
+        //     $ionicPopup.alert({
+        //                       title: 'Thank you!',
+        //                       template: 'We will review this listing.'
+        //                       });
+        //   },
+        //   error: function(point, error) {
+        //     // The save failed.
+        //     // error is a Parse.Error with an error code and description.
+        //   }
+//          
+     } else {
+       console.log('You are not sure');
+     }
+   });
+ };
+//////////////////////////////////////////////
 
     
         //// Comments Modal ///
