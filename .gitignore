@@ -5,8 +5,9 @@ node_modules/*
 platforms/*
 plugins/*
 resources/*
-/www/js/parse-keys.js
+www/js/parse-keys.js
 
 .DS_Store
 *.png
 *.psd
+*.zip
