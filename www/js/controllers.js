@@ -684,7 +684,7 @@ $scope.getItemDetails = function() {
 $scope.showAlert = function() {
    var alertPopup = $ionicPopup.alert({
      title: 'Thanks for using FindBy',
-     template: 'Mention you found this with FindBy'
+     template: 'Mention you found it with FindBy'
    });
    alertPopup.then(function(res) {
      //console.log('Thank you for not eating my delicious ice cream cone');
@@ -692,29 +692,6 @@ $scope.showAlert = function() {
  };
 
 //////////////////////////////////////////////    
-// $scope.itemReport = function() {
-//     console.log('stateParams.id:',$stateParams.id);
-// // Create a pointer to an object of class Point with listing id.
-//       var Point = Parse.Object.extend("Items");
-//       var point = new Point();
-//       point.id = $stateParams.id;
-// }
-// // Set a new value on quantity
-// point.set("reported", true);
-// // Save
-// point.save(null, {
-//   success: function(point) {
-//     // Saved successfully.
-//     $ionicPopup.alert({
-//                       title: 'Thank you!',
-//                       template: 'We will review this listing.'
-//                       });
-//   },
-//   error: function(point, error) {
-//     // The save failed.
-//     // error is a Parse.Error with an error code and description.
-//   }
-// });
 $scope.itemReport = function() {
    var confirmPopup = $ionicPopup.confirm({
      title: '<strong>Report this listing</strong>',
@@ -722,30 +699,35 @@ $scope.itemReport = function() {
    });
    confirmPopup.then(function(res) {
      if(res) {
-        console.log('You are sure');
-//
-        // // Create a pointer to an object of class Point with listing id.
-        // var Point = Parse.Object.extend("Items");
-        // var point = new Point();
-        // point.id = $stateParams.id;
-        // // Set a new value on quantity
-        // point.set("reported", true);
-        // // Save
-        // point.save(null, {
-        //   success: function(point) {
-        //     // Saved successfully.
-        //     $ionicPopup.alert({
-        //                       title: 'Thank you!',
-        //                       template: 'We will review this listing.'
-        //                       });
-        //   },
-        //   error: function(point, error) {
-        //     // The save failed.
-        //     // error is a Parse.Error with an error code and description.
-        //   }
-//          
+        // Create a pointer to an object of class Point with listing id.
+        var Point = Parse.Object.extend("Items");
+        var point = new Point();
+        point.id = $stateParams.id;
+        // Set a new value on quantity
+        point.set("reported", true);
+        // Save
+        point.save(null, {
+          success: function(point) {
+            // Saved successfully.
+            $ionicPopup.alert({
+                              title: 'Thank you!',
+                              template: 'We will review this listing.'
+                              });
+            // Addet to a new table
+            var ReportPost = Parse.Object.extend("Flags");
+            var flag = new ReportPost();
+            flag.set("item", $stateParams.id);
+            flag.set("user", $rootScope.currentUser);
+            flag.set("reported", true);
+            flag.save();
+          },
+          error: function(point, error) {
+            // The save failed.
+            // error is a Parse.Error with an error code and description.
+          }
+        });
      } else {
-       console.log('You are not sure');
+       //console.log('No');
      }
    });
  };
@@ -778,7 +760,7 @@ $scope.itemReport = function() {
                 var item = response[i].get("item");
                     var user = response[i].get("user");
                     var avatar = "";
-                if(user.get('avatar')) { avatar = user.get('avatar')._url; } else { avatar = 'img/avatar.png';} 
+                if(user.get('avatar')) { avatar = user.get('avatar')._url; } else { avatar = '../img/avatar.png';} 
                     $scope.Comments.push({
                         comment: response[i].get('comment'),
                         userEmail: user.get('email'),
@@ -845,7 +827,7 @@ $scope.itemReport = function() {
                     comment.set("item", item);
                     comment.set("user", $rootScope.currentUser);
                     comment.set("comment", $scope.commentData.comment);
-                    comment.set("approved", false);
+                    comment.set("approved", true); // false = default
                     comment.save();
                     $scope.commentsModal.hide();
                            
@@ -1044,6 +1026,16 @@ $scope.itemReport = function() {
 .controller('AddCtrl', function($scope, $state, $rootScope, $ionicPopup, ParseServices, locationService) {
     $scope.item = {};
     
+//////////////////////////////////
+if (!$scope.item.itemPrice) {
+    $scope.item.itemPrice=0
+}
+console.log('myImage',document.getElementById('myImage').src);
+if(!document.getElementById('myImage').src) {
+    $scope.parseFile='http://files.parsetfss.com/db6dabcb-5fa8-4dff-a4f8-038a9e03bc64/tfss-d8650716-2dfa-41b7-841b-9163327e7d12-picture';
+}
+//////////////////////////////////
+
      // Getting Location 
        $scope.getLocation = function() {
                     var onGeoSuccess = function(position) {
@@ -1103,6 +1095,8 @@ $scope.itemReport = function() {
             function onFail(message) {
             alert('Failed because: ' + message);
             }
+
+
                 $scope.send = function() {
                     
                     // Checking if user is logged in
@@ -1195,4 +1189,6 @@ $scope.itemReport = function() {
                 
                 
                 }
+
+
 })

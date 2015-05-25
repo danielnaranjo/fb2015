@@ -29,13 +29,15 @@
                   <span ng-show="registerForm.phone.$error.required">Phone is required.</span>
               </span>
         </label>
-        <list class="item item-input item-button-right item-floating-label">
+        <!-- get automate by default -->
+        <list class="item item-input item-button-right item-floating-label" ng-init="getLocation()">
             <span class="input-label">Where are you from?</span>
           <input type="text" placeholder="Location" ng-model="registerData.location" required name="location">
               <span class="validError" ng-show="myForm.name.$dirty && myForm.name.$invalid">
                   <span ng-show="registerForm.location.$error.required">Location is required.</span>
               </span>
-            <a class="button button-clear" ng-click="getLocation()">
+              <!-- show if we cant get it -->
+            <a class="button button-clear" ng-click="getLocation()" ng-hide="item.location">
                 <i class="icon ion-ios-navigate-outline"></i>
             </a>
         </list>

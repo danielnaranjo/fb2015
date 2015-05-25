@@ -33,9 +33,10 @@
                     
                     <label class="item-input item-select" ng-controller="CategsCtrl">
                         <div class="input-label">
-                            Category:
+                            What type of posting is?
                         </div>
                         <select ng-model="item.categorySelect" name="category" required>
+                            <!-- <option value="">Choose one</option> -->
                             <option ng-repeat="categ in Categories" value="{{categ.id}}">{{categ.name}}</option>
                         </select>
                         <span class="validError" ng-show="myForm.category.$dirty && myForm.category.$invalid">
@@ -50,7 +51,7 @@
             
             <div class="text-center">
                 
-                <h5 class="center">Select a picture</h5>
+                <h5 class="center">Select a picture (Required)</h5>
                 <div class="row selectPictureIcons">
                     <div class="col borderRight back-1">
                         <i ng-click="getImage()" class="icon ion-images"></i>
@@ -88,7 +89,7 @@
                             <span class="validError" ng-show="myForm.location.$dirty && myForm.location.$invalid">
                                 <span ng-show="myForm.location.$error.required">Location is required.</span>
                             </span>
-                            </label>
+                    </label>
                     
                     <a class="button button-clear" ng-click="getLocation()" ng-hide="item.location"><!-- show if we cant get it -->
                         <i class="icon ion-ios-navigate-outline"></i>
@@ -112,7 +113,38 @@
                     
                 </div>
             </div>
-            
+
+            <!-- Ask for a feature or Staff pick -->
+            <!-- <div class="row">
+                <div class="col">
+                    <label class="item-input item-select">
+                        <div class="input-label">
+                            Promote as Featured
+                            <i class="icon ion-card"></i>
+
+                        </div>
+                        <select ng-model="item.featured" name="featured" required>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="row" ng-show="item.featured=='Yes'">
+                <div class="col">
+                    <label class="item-input item-select">
+                        <div class="input-label">
+                            Promote as Staff picks
+                            <i class="icon ion-card"></i>
+                        </div>
+                        <select ng-model="item.staff" name="staff">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </label>
+                </div>
+            </div> -->
+            <!-- Ask for a feature or Staff pick -->         
             
             
             <div class="row" ng-show="!currentUser.email">
@@ -160,10 +192,15 @@
             
             <div class="row">
                 <div class="col colSubmit">
-                    <button ng-disabled="myForm.$invalid && !currentUser" class="button button-calm button-full" ng-click="send()">
+                    <button ng-disabled="myForm.$invalid && !currentUser" class="button button-calm button-full" ng-click="send()" ng-hide="!item.itemName && !item.categorySelect.option.selected">
                         Submit
                     </button>
-                    
+                    <button disabled class="button button-calm button-full" ng-show="!item.itemName && !item.categorySelect.option">
+                        Fill form application
+                    </button>
+                    <p ng-show="item.featured=='Yes'" class="padding">
+                        <i class="icon ion-card"></i> Some features are pay. You will receive an confirmation email.
+                    </p>
                 </div>
             </div>
             
