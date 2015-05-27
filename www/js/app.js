@@ -19,17 +19,52 @@ angular.module('Klasy', ['ionic', 'Klasy.controllers', 'Klasy.services', 'ngMap'
       StatusBar.styleDefault();
     }
 
-                if(navigator.connection.type == Connection.NONE) { 
-                    $ionicPopup.confirm({
-                        title: "Internet Disconnected",
-                        content: "Please connect to the internet and come back."
-                    })
-                    .then(function(result) {
-                        if(!result) {
-                            ionic.Platform.exitApp();
-                        }
-                    });
-                }
+    if(navigator.connection.type == Connection.NONE) { 
+        $ionicPopup.confirm({
+            title: "Internet Disconnected",
+            content: "Please connect to the internet and come back."
+        })
+        .then(function(result) {
+            if(!result) {
+                ionic.Platform.exitApp();
+            }
+        });
+    }
+
+    // // Google Analytics
+    // // https://blog.nraboy.com/2014/06/using-google-analytics-ionicframework/
+    // $ionicPlatform.ready(function() {
+    //     if(typeof analytics !== undefined) {
+    //         analytics.startTrackerWithId("UA-35993973-9");
+    //     } else {
+    //         console.log("Google Analytics Unavailable");
+    //     }
+    // });
+
+    // // Google AdMob
+    // // https://blog.nraboy.com/2014/06/using-admob-ionicframework/
+    // if(window.plugins && window.plugins.AdMob) {
+    //   var admob_key = device.platform == "Android" ? "ANDROID_PUBLISHER_KEY" : "IOS_PUBLISHER_KEY";
+    //   var admob = window.plugins.AdMob;
+    //   admob.createBannerView(
+    //       {
+    //           'publisherId': admob_key,
+    //           'adSize': admob.AD_SIZE.BANNER,
+    //           'bannerAtTop': false
+    //       }, 
+    //       function() {
+    //           admob.requestAd(
+    //               { 'isTesting': false },
+    //               function() {
+    //                   admob.showAd(true);
+    //               }, 
+    //               function() { console.log('failed to request ad'); }
+    //           );
+    //       }, 
+    //       function() { console.log('failed to create banner view'); }
+    //     );
+    //   }
+    //
 
   });
 })

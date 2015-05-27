@@ -7,8 +7,8 @@ angular.module('Klasy.controllers', [])
                 $rootScope.currentUser.email = Parse.User.current().get('email');
             }, 1000);
             
-
-
+    // Google Analytics + Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView("AppCtrl"); }
             
   // Form data for the login and reset password modal (& search)
     $scope.loginData = {};
@@ -276,6 +276,8 @@ $scope.terms = function() {
 
 .controller('SearchResultsCtrl', function($scope, $rootScope, $ionicLoading, ParseServices) {
 
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('SearchResultsCtrl');}
     
     $rootScope.searchItemIDs = [];
     $scope.page = 0;
@@ -347,6 +349,9 @@ $scope.terms = function() {
 
 .controller('UserItemsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, ParseServices) {
 
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('UserItemsCtrl');}
+
     $scope.getUserItems = function() {
     
         $ionicLoading.show({
@@ -393,6 +398,10 @@ $scope.terms = function() {
 
 
 .controller('HelpCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+
+    // Google Analytics SDK Cordova
+  if(typeof analytics !== undefined) { analytics.trackView('HelpCtrl');}
+
   $scope.nextSlide = function() {
     $ionicSlideBoxDelegate.next();
   }
@@ -402,10 +411,15 @@ $scope.terms = function() {
   $scope.gotoHome = function() {
     $state.transitionTo("app.home");
   }
+
 })
 
 
 .controller('HomeCtrl', function($scope, $ionicLoading, ParseServices, $window, $timeout) {
+
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('HomeCtrl'); }
+
     $ionicLoading.show({
       template: 'Loading...'
     });
@@ -501,6 +515,7 @@ $scope.terms = function() {
 })
 
 .controller('ItemsCtrl', function($scope, $state, $stateParams, $ionicLoading, ParseServices) {
+
     $ionicLoading.show({
       template: 'Loading...'
     });
@@ -564,7 +579,10 @@ $scope.terms = function() {
 })
 
 .controller('ItemCtrl', function($scope, $state, $rootScope, $ionicModal, $ionicPopup, $stateParams, $ionicHistory, $ionicLoading, $ionicScrollDelegate, $timeout, ParseServices) {
-    
+ 
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('ItemCtrl');}
+
     $ionicLoading.show({
       template: 'Loading...'
     });
@@ -794,6 +812,10 @@ $scope.itemReport = function() {
 
 
 .controller('NearMeCtrl', function($scope, $state, $rootScope, ParseServices) {
+
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('NearMeCtrl');}
+
     ParseServices.nearMe($rootScope.currentUser, 100).then(function(response) {
         
         $scope.nearItems = [];
@@ -821,6 +843,10 @@ $scope.itemReport = function() {
 
 
 .controller('CommentsCtrl', function($scope, $rootScope, $ionicModal, $ionicPopup) {
+
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('CommentsCtrl'); }
+
     // Perform the action when the user submits the form
                 $scope.doComment = function(item) {
                     var CommentCreate = Parse.Object.extend("Comments");
@@ -841,6 +867,9 @@ $scope.itemReport = function() {
 
 
 .controller('UserCommentsCtrl', function($scope, $rootScope, $ionicLoading, ParseServices) {
+
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('UserCommentsCtrl'); }
 
     $scope.getUserComments = function() {
         $scope.Comments = [];
@@ -874,6 +903,10 @@ $scope.itemReport = function() {
 
 
 .controller('SettingsCtrl', function($scope, $rootScope, $ionicPopup, ParseServices, locationService) {
+
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('SettingsCtrl'); }
+
     $scope.User = [];
     ParseServices.getFirst('User', "email", $rootScope.currentUser.get('email')).then(function(response) { 
         if(response.get('avatar')) { var avatar = response.get('avatar')._url; } else { var avatar = 'img/avatar.png';} 
@@ -969,7 +1002,10 @@ $scope.itemReport = function() {
 })
 
 .controller('UserFavouritesCtrl', function($scope, $state, $rootScope, $ionicPopup, $ionicLoading, ParseServices) {
-    
+
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView('UserFavouritesCtrl'); }
+
     $scope.getFavourites = function() {
         
         $ionicLoading.show({
@@ -1025,10 +1061,12 @@ $scope.itemReport = function() {
 
 
 .controller('AddCtrl', function($scope, $state, $rootScope, $ionicPopup, ParseServices, locationService) {
-    $scope.item = {};
 
-    // prevent price error, default is zero
-    $scope.item.itemPrice=0;
+    // Google Analytics SDK Cordova
+    // if(typeof analytics !== undefined) { analytics.trackView("AddCtrl"); }
+
+    $scope.item = {};
+    
      // Getting Location 
        $scope.getLocation = function() {
                     var onGeoSuccess = function(position) {
@@ -1049,11 +1087,7 @@ $scope.itemReport = function() {
             // onError Callback receives a PositionError object
             //
             function onGeoError(error) {
-                //alert(error.message);
-                $ionicPopup.alert({
-                  title: 'Error!',
-                  template: 'We can\'t find you. Code 502'
-                  });
+                alert(error.message);
             }
             navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);   
     }
@@ -1088,19 +1122,15 @@ $scope.itemReport = function() {
                 // The file either could not be read, or could not be saved to Parse.
             });
 } 
-
             
             function onFail(message) {
-                //alert('Failed because: ' + message);
-                $ionicPopup.alert({
-                              title: 'Error',
-                              template: 'We can\'t complete this action. Code 501'
-                              });
+            alert('Failed because: ' + message);
             }
-
-                $scope.send = function() { 
+                $scope.send = function() {
                     
                     // Checking if user is logged in
+       
+                    
                     if($rootScope.currentUser) {
                     var ItemCreate = Parse.Object.extend("Items");
                     var Item = new ItemCreate();  
@@ -1113,16 +1143,16 @@ $scope.itemReport = function() {
                     Item.set("reported", false);
                     Item.set("staffPicked", false);
                     Item.set("categorySelect", $scope.item.categorySelect);
-                    Item.set("itemCoords", $rootScope.currentUser.get('coords'));
-                    Item.set("itemLocation", $rootScope.currentUser.get('location'));
-                    Item.set("user", $rootScope.currentUser.get('email'));
+                        Item.set("itemCoords", $rootScope.currentUser.get('coords'));
+                        Item.set("itemLocation", $rootScope.currentUser.get('location'));
+                        Item.set("user", $rootScope.currentUser.get('email'));
                     Item.set("background", Math.floor((Math.random()*6)+1));
                     Item.set("itemPicture", $scope.parseFile);
-                        Item.save();
-                        $ionicPopup.alert({
-                                  title: 'Congratulations!',
-                                  template: 'We will review your listing in a bit.'
-                                  });
+                    Item.save();
+                    $ionicPopup.alert({
+                              title: 'Congratulations!',
+                              template: 'We will review your listing in a bit.'
+                              });
                         $state.transitionTo("app.home");
                     } else {
                      // If there is no logged in user                
@@ -1172,14 +1202,10 @@ $scope.itemReport = function() {
                         },
                         error: function(user, error) {
                             // Show the error message somewhere and let the user try again.
-                            //alert(error.message);
-                            $ionicPopup.alert({
-                              title: 'Error!',
-                              template: 'We can\'t complete your registration. Code 500'
-                              });
+                        alert(error.message);
                         }
                     });
-                                      
+                    
                     Item.save();
                    // user.save();
                     
@@ -1192,6 +1218,4 @@ $scope.itemReport = function() {
                 
                 
                 }
-
-
 })

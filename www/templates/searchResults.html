@@ -21,7 +21,7 @@
         </div>
         
   <a class="back-{{item.background}} itemBox"ng-repeat="item in ItemsResutlts" href="#/app/item/{{item.id}}">
-      <div class="price">
+    <div class="price" ng-show="item.price>0">
       <i ng-show="item.featured || item.staffPicked" class="icon ion-heart labelFeatured"></i> $ {{item.price}}    
     </div>
     <div class="image">
