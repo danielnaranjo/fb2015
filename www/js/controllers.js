@@ -7,22 +7,8 @@ angular.module('Klasy.controllers', [])
                 $rootScope.currentUser.email = Parse.User.current().get('email');
             }, 1000);
             
- //// Terms Modal ///
-// Create the terms modal
-$ionicModal.fromTemplateUrl('templates/terms.html', {
-  scope: $scope
-}).then(function(modal) {
-  $scope.termsModal = modal;
-});
-// Triggered in the terms modal to close it
-$scope.closeTerms = function() {
-  $scope.termsModal.hide();
-};
-// Open the terms modal
-$scope.terms = function() {
-  $scope.termsModal.show();
-};       
-            
+
+
             
   // Form data for the login and reset password modal (& search)
     $scope.loginData = {};
@@ -48,6 +34,21 @@ $scope.terms = function() {
     $scope.loginModal.show();
     $scope.registerModal.hide();
   };
+
+   //// Terms Modal ///
+$ionicModal.fromTemplateUrl('templates/terms.html', {
+  scope: $scope
+}).then(function(modal) {
+  $scope.termsModal = modal;
+});
+// Triggered in the terms modal to close it
+$scope.closeTerms = function() {
+  $scope.termsModal.hide();
+};
+// Open the terms modal
+$scope.terms = function() {
+  $scope.termsModal.show();
+}; 
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
@@ -464,7 +465,7 @@ $scope.terms = function() {
                 picture: response[i].get('itemPicture')._url,
                 featured: response[i].get('featured'),
                 staffPicked: response[i].get('staffPicked'),
-                id: response[i].id,            
+                id: response[i].id,
             })
         }
         
@@ -1025,17 +1026,9 @@ $scope.itemReport = function() {
 
 .controller('AddCtrl', function($scope, $state, $rootScope, $ionicPopup, ParseServices, locationService) {
     $scope.item = {};
-    
-//////////////////////////////////
-if (!$scope.item.itemPrice) {
-    $scope.item.itemPrice=0
-}
-console.log('myImage',document.getElementById('myImage').src);
-if(!document.getElementById('myImage').src) {
-    $scope.parseFile='http://files.parsetfss.com/db6dabcb-5fa8-4dff-a4f8-038a9e03bc64/tfss-d8650716-2dfa-41b7-841b-9163327e7d12-picture';
-}
-//////////////////////////////////
 
+    // prevent price error, default is zero
+    $scope.item.itemPrice=0;
      // Getting Location 
        $scope.getLocation = function() {
                     var onGeoSuccess = function(position) {
@@ -1056,7 +1049,11 @@ if(!document.getElementById('myImage').src) {
             // onError Callback receives a PositionError object
             //
             function onGeoError(error) {
-                alert(error.message);
+                //alert(error.message);
+                $ionicPopup.alert({
+                  title: 'Error!',
+                  template: 'We can\'t find you. Code 502'
+                  });
             }
             navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);   
     }
@@ -1091,17 +1088,19 @@ if(!document.getElementById('myImage').src) {
                 // The file either could not be read, or could not be saved to Parse.
             });
 } 
+
             
             function onFail(message) {
-            alert('Failed because: ' + message);
+                //alert('Failed because: ' + message);
+                $ionicPopup.alert({
+                              title: 'Error',
+                              template: 'We can\'t complete this action. Code 501'
+                              });
             }
 
-
-                $scope.send = function() {
+                $scope.send = function() { 
                     
                     // Checking if user is logged in
-       
-                    
                     if($rootScope.currentUser) {
                     var ItemCreate = Parse.Object.extend("Items");
                     var Item = new ItemCreate();  
@@ -1114,16 +1113,16 @@ if(!document.getElementById('myImage').src) {
                     Item.set("reported", false);
                     Item.set("staffPicked", false);
                     Item.set("categorySelect", $scope.item.categorySelect);
-                        Item.set("itemCoords", $rootScope.currentUser.get('coords'));
-                        Item.set("itemLocation", $rootScope.currentUser.get('location'));
-                        Item.set("user", $rootScope.currentUser.get('email'));
+                    Item.set("itemCoords", $rootScope.currentUser.get('coords'));
+                    Item.set("itemLocation", $rootScope.currentUser.get('location'));
+                    Item.set("user", $rootScope.currentUser.get('email'));
                     Item.set("background", Math.floor((Math.random()*6)+1));
                     Item.set("itemPicture", $scope.parseFile);
-                    Item.save();
-                    $ionicPopup.alert({
-                              title: 'Congratulations!',
-                              template: 'We will review your listing in a bit.'
-                              });
+                        Item.save();
+                        $ionicPopup.alert({
+                                  title: 'Congratulations!',
+                                  template: 'We will review your listing in a bit.'
+                                  });
                         $state.transitionTo("app.home");
                     } else {
                      // If there is no logged in user                
@@ -1173,10 +1172,14 @@ if(!document.getElementById('myImage').src) {
                         },
                         error: function(user, error) {
                             // Show the error message somewhere and let the user try again.
-                        alert(error.message);
+                            //alert(error.message);
+                            $ionicPopup.alert({
+                              title: 'Error!',
+                              template: 'We can\'t complete your registration. Code 500'
+                              });
                         }
                     });
-                    
+                                      
                     Item.save();
                    // user.save();
                     
