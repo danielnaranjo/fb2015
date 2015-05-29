@@ -11,3 +11,5 @@ www/js/parse-keys.js
 *.png
 *.psd
 *.zip
+*.keystore
+*.apk

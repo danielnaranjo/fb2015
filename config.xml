@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.classynew108683" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>findby</name>
+<widget id="com.ionicframework.findby" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>FindBy</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
+    Much more that an classifieds ads
+  </description>
+  <author email="info@loultimoenlaweb" href="http://loultimoenlaweb.com/">
+    Lo Ultimo Group
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <access origin="tel:*" launch-external="yes"/>
@@ -21,9 +21,10 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
-  <feature name="UniversalAnalytics">
+
+  <!-- <feature name="UniversalAnalytics">
     <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
-  </feature>
+  </feature> -->
 
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
@@ -72,5 +73,4 @@
     <splash src="resources/ios/splash/Default@2x~iphone.png" width="640" height="960"/>
     <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
   </platform>
-  <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
 </widget>
