@@ -1,11 +1,11 @@
 angular.module('Klasy.controllers', [])
 
-.controller('AppCtrl', function($scope, $rootScope, $state, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ParseServices, locationService) {
+.controller('AppCtrl', function($scope, $rootScope, $state, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ParseServices, locationService, $translate) {
 
-            $timeout(function() {
-                $rootScope.currentUser = Parse.User.current();
-                $rootScope.currentUser.email = Parse.User.current().get('email');
-            }, 1000);
+  $timeout(function() {
+      $rootScope.currentUser = Parse.User.current();
+      $rootScope.currentUser.email = Parse.User.current().get('email');
+  }, 1000);
             
     // Google Analytics + Cordova
     // if(typeof analytics !== undefined) { analytics.trackView("AppCtrl"); }
@@ -274,7 +274,7 @@ $scope.terms = function() {
  })
 
 
-.controller('SearchResultsCtrl', function($scope, $rootScope, $ionicLoading, ParseServices) {
+.controller('SearchResultsCtrl', function($scope, $rootScope, $ionicLoading, ParseServices, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('SearchResultsCtrl');}
@@ -347,7 +347,7 @@ $scope.terms = function() {
     }
 })
 
-.controller('UserItemsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, ParseServices) {
+.controller('UserItemsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, ParseServices, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('UserItemsCtrl');}
@@ -397,10 +397,10 @@ $scope.terms = function() {
 })
 
 
-.controller('HelpCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+.controller('HelpCtrl', function($scope, $state, $ionicSlideBoxDelegate, $translate) {
 
-    // Google Analytics SDK Cordova
-  if(typeof analytics !== undefined) { analytics.trackView('HelpCtrl');}
+  // Google Analytics SDK Cordova
+  //if(typeof analytics !== undefined) { analytics.trackView('HelpCtrl');}
 
   $scope.nextSlide = function() {
     $ionicSlideBoxDelegate.next();
@@ -415,7 +415,7 @@ $scope.terms = function() {
 })
 
 
-.controller('HomeCtrl', function($scope, $ionicLoading, ParseServices, $window, $timeout) {
+.controller('HomeCtrl', function($scope, $ionicLoading, ParseServices, $window, $timeout, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('HomeCtrl'); }
@@ -497,7 +497,7 @@ $scope.terms = function() {
 })
 
 
-.controller('CategsCtrl', function($scope, ParseServices) {
+.controller('CategsCtrl', function($scope, ParseServices, $translate) {
     $scope.Categories = [];
     ParseServices.getAll('Categories').then(function(response) {
         
@@ -514,7 +514,7 @@ $scope.terms = function() {
     });      
 })
 
-.controller('ItemsCtrl', function($scope, $state, $stateParams, $ionicLoading, ParseServices) {
+.controller('ItemsCtrl', function($scope, $state, $stateParams, $ionicLoading, ParseServices, $translate) {
 
     $ionicLoading.show({
       template: 'Loading...'
@@ -523,6 +523,8 @@ $scope.terms = function() {
     $scope.getCategoryName = function() {
         ParseServices.getFirst('Categories', "objectId", $stateParams.id).then(function(results) {
             $scope.categoryName = results.get('categName');
+            // Modified
+            $scope.id = $stateParams.id;
             $scope.$apply();
         });
     }
@@ -578,7 +580,7 @@ $scope.terms = function() {
     
 })
 
-.controller('ItemCtrl', function($scope, $state, $rootScope, $ionicModal, $ionicPopup, $stateParams, $ionicHistory, $ionicLoading, $ionicScrollDelegate, $timeout, ParseServices) {
+.controller('ItemCtrl', function($scope, $state, $rootScope, $ionicModal, $ionicPopup, $stateParams, $ionicHistory, $ionicLoading, $ionicScrollDelegate, $timeout, ParseServices, $translate) {
  
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('ItemCtrl');}
@@ -811,7 +813,7 @@ $scope.itemReport = function() {
 })
 
 
-.controller('NearMeCtrl', function($scope, $state, $rootScope, ParseServices) {
+.controller('NearMeCtrl', function($scope, $state, $rootScope, ParseServices, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('NearMeCtrl');}
@@ -823,6 +825,8 @@ $scope.itemReport = function() {
         for (var i = 0; i < response.length; i++) {
             $scope.nearItems.push({
                 name: response[i].get('itemName'),
+                // Modified by DN
+                category: response[i].get('categorySelect'),
                 coords: response[i].get('itemCoords').latitude + ',' + response[i].get('itemCoords').longitude,
                 location: response[i].get('itemLocation'),
                 id: response[i].id,
@@ -842,7 +846,7 @@ $scope.itemReport = function() {
 })
 
 
-.controller('CommentsCtrl', function($scope, $rootScope, $ionicModal, $ionicPopup) {
+.controller('CommentsCtrl', function($scope, $rootScope, $ionicModal, $ionicPopup, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('CommentsCtrl'); }
@@ -866,7 +870,7 @@ $scope.itemReport = function() {
     })
 
 
-.controller('UserCommentsCtrl', function($scope, $rootScope, $ionicLoading, ParseServices) {
+.controller('UserCommentsCtrl', function($scope, $rootScope, $ionicLoading, ParseServices, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('UserCommentsCtrl'); }
@@ -902,7 +906,7 @@ $scope.itemReport = function() {
 })
 
 
-.controller('SettingsCtrl', function($scope, $rootScope, $ionicPopup, ParseServices, locationService) {
+.controller('SettingsCtrl', function($scope, $rootScope, $ionicPopup, ParseServices, locationService, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('SettingsCtrl'); }
@@ -1001,7 +1005,7 @@ $scope.itemReport = function() {
     
 })
 
-.controller('UserFavouritesCtrl', function($scope, $state, $rootScope, $ionicPopup, $ionicLoading, ParseServices) {
+.controller('UserFavouritesCtrl', function($scope, $state, $rootScope, $ionicPopup, $ionicLoading, ParseServices, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView('UserFavouritesCtrl'); }
@@ -1060,7 +1064,7 @@ $scope.itemReport = function() {
 })
 
 
-.controller('AddCtrl', function($scope, $state, $rootScope, $ionicPopup, ParseServices, locationService) {
+.controller('AddCtrl', function($scope, $state, $rootScope, $ionicPopup, ParseServices, locationService, $translate) {
 
     // Google Analytics SDK Cordova
     // if(typeof analytics !== undefined) { analytics.trackView("AddCtrl"); }

@@ -4,9 +4,15 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('Klasy', ['ionic', 'Klasy.controllers', 'Klasy.services', 'ngMap'])
+angular.module('Klasy', [
+  'ionic',
+  'Klasy.controllers',
+  'Klasy.services',
+  'ngMap',
+  'pascalprecht.translate'
+  ])
 
-.run(function($ionicPlatform, $ionicPopup) {
+.run(function($ionicPlatform, $ionicPopup, $translate) {
         
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -29,6 +35,15 @@ angular.module('Klasy', ['ionic', 'Klasy.controllers', 'Klasy.services', 'ngMap'
                 ionic.Platform.exitApp();
             }
         });
+    }
+    if(typeof navigator.globalization !== "undefined") {
+      navigator.globalization.getPreferredLanguage(function(language) {
+        $translate.use((language.value).split("-")[0]).then(function(data) {
+          console.log("SUCCESS -> " + data);
+        }, function(error) {
+          console.log("ERROR -> " + error);
+        });
+      }, null);
     }
 
     // // Google Analytics
@@ -69,7 +84,211 @@ angular.module('Klasy', ['ionic', 'Klasy.controllers', 'Klasy.services', 'ngMap'
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+
+  // Begin Lang()
+  // $translateProvider.translations('en', translations_en);
+  // $translateProvider.translations('es', translations_es);
+
+  $translateProvider.translations('en', {
+    // Menu
+    'Featured': 'Featured',
+    'StaffPicks': 'Staff Picks',
+    'Newest':'Newest',
+    'Home':'Home',
+    'MyFavs':'My Favs',
+    'MyAds':'My Ads',
+    'Messages':'Messages',
+    'Settings':'Settings',
+    'NearMe':'Near Me',
+    'Terms':'Terms of Use',
+    'Help':'Help',
+    'LogOut':'Log Out',
+    'LogIn':'Log In',
+    // Item
+    'ReportThis':'Report this listing',
+    'SignToReport':'Sign up or Login to report this listing',
+    // Comments
+    'Comments':'Comments',
+    'SignToComment':'Login / Register to comment',
+    'AddMessage':'Add your message',
+    'Comment':'Comment',
+    // Login
+    'Login':'Login',
+    'Email':'E-mail',
+    'Password':'Password',
+    'ForgotPass':'Forgot Password',
+    'RegisterNow':'Register',
+    'NewAccount':'Don\'t have an account?',
+    // Reset pass
+    'ResetPassword':'Reset Password',
+    // SignIn
+    'AlreadyRegistered':'Already registered?',
+    'SignIn':'Sign In',
+    'Phone':'Phone Number',
+    'WhereAreYouFrom':'Where Are You From?',
+    'IsRequired':'is required.',
+    'Youremailaddress':'Your email address',
+    'Weneedyourphonenumber':'We need your phone number',
+    'Chooseapassword':'Choose a password',
+    // Categories
+    'aO8XZPZZfs':'Buy / Sell',// buy/sel
+    'x9spj4HMwH':'Services',// services
+    'jgwBXXUKh6':'Dating',// dating
+    'qtMW5XJ8tq':'Real Estate',// real estate
+    'K0XEtf2TcT':'Jobs / Hire',// jobs
+    'e4vU3E5cAv':'Cars',// cars
+    // by Categories
+    'NoListings':'No listings',
+    'ThisCategory':'for this category',
+    'AddYours':'Add yours',
+    // Near Me
+    'Details':'details',
+    // usercomments
+    'NoMessages':'You have no messages.',
+    // userfavs
+    'NoFavourites':'You have no favourites.',
+    'Myfavourites':'my favourites',
+    // listing
+    'You have no items. Add a new one ':'You have no items. Add a new one ',
+    'Here':'here.',
+    'MyListings':'my listings',
+    'Whatdoyouwanttosell':'What do you want to sell?',
+    'Whattypeofpostingis':'What type of posting is?',
+    'Title':'Product name',
+    'Category':'Category',
+    'selectpicture':'Select a picture (Required)',
+    'Price':'Price',
+    'Describe':'Describe in a few words',
+    'Description':'Description',
+    'Featured':'Featured',
+    'YourEmailaddress':'Your email address',
+    'YourPhoneNumber':'Your phone number',
+    'ChoosePassword':'Choose a password',
+    'Submit':'Submit',
+    'CompleteForm':'Fill form application',
+    'PremiumExtras':'Some features are pay. You will receive an confirmation email.',
+    // settings
+    'NewLocation':'Select a new location',
+    'SelectPicture':'Select profile picture',
+    // Search 
+    'Close':'Close',
+    'TermsOfSearch':'Terms of Search',
+    'Search':'Search',
+    'NoResults':'No results',
+    'foryoursearch':'for your search',
+    // Help
+    'WhatcanyoudowithFindBy':'What can you do with FindBy?',
+    'Postaadsclassifiedtoyourstuff':'Post a ads classified to your stuff',
+    'Findpostnearbyyourlocation':'Find post nearby your location',
+    'Promoteyourbusinessservices':'Promote your business services',
+    'Postjobshireemployees':'Post jobs, hire employees',
+    'Skyisthelimit':'Sky is the limit!',
+    'support1':'Need support with your ads or have any questions? Drop us a line to',
+    'support2':'or tweets us at'
+  });
+  $translateProvider.translations('es', {
+    // Menu
+    'Featured': 'Destacados',
+    'StaffPicks': 'Recomendadas',
+    'Newest':'Lo nuevo',
+    'Home':'Inicio',
+    'MyFavs':'Favoritos',
+    'MyAds':'Anuncios',
+    'Messages':'Preguntas',
+    'Settings':'Ajustes',
+    'NearMe':'Cercanos',
+    'Terms':'Terminos',
+    'Help':'Ayuda',
+    'LogOut':'Salir',
+    'LogIn':'Entrar',
+    // Item
+    'ReportThis':'Marcar como inapropiado',
+    'SignToReport':'Acceder para reportar',
+    // Comments
+    'Comments':'Preguntas',
+    'SignToComment':'Entrar / Registrarse para comentar',
+    'AddMessage':'Escribe tu pregunta',
+    'Comment':'Enviar',
+    // Login
+    'Login':'Login',
+    'Email':'E-mail',
+    'Password':'Contraseña',
+    'ForgotPass':'Olvide mi contraseña',
+    'RegisterNow':'Quiero registrarme',
+    'NewAccount':'No tengo una cuenta',
+    // Reset pass
+    'ResetPassword':'Cambiar contraseña',
+    // SignIn
+    'AlreadyRegistered':'Ya tengo una cuenta',
+    'SignIn':'Registrarme',
+    'Phone':'Teléfono',
+    'WhereAreYouFrom':'De donde eres?',
+    'IsRequired':'es requerido.',
+    'Location':'Ubicación',
+    'Youremailaddress':'Su E-mail',
+    'Weneedyourphonenumber':'Necesitamos su teléfono',
+    'Chooseapassword':'Escriba una contraseña',
+    // Categories
+    'aO8XZPZZfs':'Compra / Venta',// buy/sell
+    'x9spj4HMwH':'Servicios',// services
+    'jgwBXXUKh6':'Citas',// dating
+    'qtMW5XJ8tq':'Inmobiliarias',// real estate
+    'K0XEtf2TcT':'Trabajo',// jobs
+    'e4vU3E5cAv':'Carros',// cars
+    // by Categories
+    'NoListings':'No hay anuncios',
+    'ThisCategory':'para la categoria',
+    'AddYours':'Agregar nuevo',
+    // Near Me
+    'Details':'Ver mas',
+    // usercomments
+    'NoMessages':'No tienes preguntas.',
+    // usercomments
+    'NoFavourites':'No tienes favoritos.',
+    'Myfavourites':'Mis favoritos',
+    // listing
+    'NoItems':'You have no items. Add a new one ',
+    'Here':'here.',
+    'MyListings':'Mis publicaciones',
+    'Whatdoyouwanttosell':'Que desea publicar?',
+    'Whattypeofpostingis':'Que tipo de anuncio?',
+    'Title':'Titulo',
+    'Category':'Categoria',
+    'selectpicture':'Seleccione una imagen (Requerida)',
+    'Price':'Precio',
+    'Describe':'Describa su anuncio',
+    'Description':'Descripción',
+    'Featured':'Destacado',
+    'YourEmailaddress':'Introduzca su correo',
+    'YourPhoneNumber':'Su teléfono',
+    'ChoosePassword':'Elija una contraseña',
+    'Submit':'Enviar',
+    'CompleteForm':'Complete el formulario',
+    'PremiumExtras':'Algunas caracteristicas son pagas. Ud recibirá un correo de confirmación.',
+    // settings
+    'NewLocation':'Agrega una nueva ubicación',
+    'SelectPicture':'Escoge una nueva foto de perfil',
+    // Search 
+    'Close':'Cerrar',
+    'TermsOfSearch':'Buscar...',
+    'Search':'Busqueda',
+    'NoResults':'No hay resultados',
+    'foryoursearch':'para su busqueda',
+    // Help
+    'WhatcanyoudowithFindBy':'Que puedo hacer con FindBy?',
+    'Postaadsclassifiedtoyourstuff':'Publicar sus objectos para venderlos',
+    'Findpostnearbyyourlocation':'Conseguir anuncios cercanos',
+    'Promoteyourbusinessservices':'Promover sus servicios profesionales',
+    'Postjobshireemployees':'Publicar ofertas de trabajo o contratar empleados',
+    'Skyisthelimit':'El cielo es el limite!',
+    'support1':'Necesita ayuda para publicar su anuncio o quiere contactarnos? Envianos un correo a',
+    'support2':' o envianos un tuit a'
+  });
+
+  // English by Default
+  $translateProvider.preferredLanguage("en");
+  $translateProvider.fallbackLanguage("en");
     
   $stateProvider
 

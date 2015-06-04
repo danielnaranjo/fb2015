@@ -25,48 +25,48 @@
       <div class="buttons">
             <a ng-click="login()" ng-hide="currentUser" class="button button-clear logo">
                 <i class="icon ion-log-in"></i>
-                <p class="smallText">log in</p>
+                <p class="smallText">{{'LogIn'|translate}}</p>
             </a>
           
             <a href="#/home" class="button button-clear logo" nav-clear menu-close>
                 <i class="icon ion-ios-home-outline"></i>
-                <p class="smallText">home</p>
+                <p class="smallText">{{'Home'|translate}}</p>
             </a>
           <a ng-show="currentUser" href="#/app/userfavourites" class="button button-clear logo" nav-clear menu-close>
                 <i class="icon ion-ios-heart-outline"></i>
-              <p class="smallText">my favs</p>
+              <p class="smallText">{{'MyFavs'|translate}}</p>
             </a>
           <a ng-show="currentUser" href="#/app/useritems" class="button button-clear logo" nav-clear menu-close>
                 <i class="icon ion-ios-pricetags-outline"></i>
-              <p class="smallText">my ads</p>
+              <p class="smallText">{{'MyAds'|translate}}</p>
           </a>
           <a ng-show="currentUser" href="#/app/usercomments" class="button button-clear logo" nav-clear menu-close>
               <i class="icon ion-ios-chatboxes-outline"></i>
-            <p class="smallText">messages</p>
+            <p class="smallText">{{'Messages'|translate}}</p>
           </a>
           <a ng-show="currentUser" href="#/app/settings" class="button button-clear logo" nav-clear menu-close>
               <i class="icon ion-ios-settings"></i>
-            <p class="smallText">settings</p>
+            <p class="smallText">{{'Settings'|translate}}</p>
           </a>
           
           <a ng-show="currentUser.get('coords')" href="#/app/nearme" ng-show="currentUser" class="button button-clear logo" nav-clear menu-close>
               <i class="icon ion-ios-location-outline"></i>
-            <p class="smallText">near me</p>
+            <p class="smallText">{{'NearMe'|translate}}</p>
           </a>
 
           <a ng-click="terms()" class="button button-clear logo" nav-clear menu-close>
               <i class="icon ion-ios-paper-outline"></i>
-              <p class="smallText">terms of use</p>
+              <p class="smallText">{{'Terms'|translate}}</p>
           </a>
 
           <a href="#/app/help" class="button button-clear logo" nav-clear menu-close>
               <i class="icon ion-ios-help-outline"></i>
-            <p class="smallText">help</p>
+            <p class="smallText">{{'Help'|translate}}</p>
           </a>
 
           <a ng-click="doLogout()" ng-show="currentUser" class="button button-clear logo" nav-clear menu-close>
             <i class="icon ion-log-out"></i>
-            <p class="smallText">log out</p>
+            <p class="smallText">{{'LogOut'|translate}}</p>
           </a>
 
         </div>
@@ -77,10 +77,10 @@
       <ion-content class="padding" ng-controller="CategsCtrl">
           <a ng-repeat="categ in Categories | orderBy:'categName'" class="button button-clear logo" href="#/app/items/{{categ.id}}" nav-clear menu-close>
                 <i class="icon {{categ.icon}}"></i>
-                <p class="smallText">{{categ.name}}</p>
+                <p class="smallText">{{categ.id|translate}}</p>
           </a>  
     </ion-content>
-</ion-side-menu>
+  </ion-side-menu>
   
 </ion-side-menus>
 

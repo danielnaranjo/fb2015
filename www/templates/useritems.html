@@ -5,7 +5,9 @@
             <button class="button button-clear" menu-toggle="left"><i class="icon ion-navicon"></i></button>
             <a class="button button-clear" ng-click="search()"><i class="icon ion-search"></i></a>
         </div>
-        <h1 class="title logo">my listings</h1>
+        <h1 class="title logo">
+            {{'MyAds'|translate}}
+        </h1>
         <div class="buttons">
             <a class="button button-clear" href="#/app/add"><i class="icon ion-ios-plus"></i></a>
             <button class="button button-clear" menu-toggle="right"><i class="icon ion-ios-albums-outline"></i></button> 
@@ -15,7 +17,7 @@
     <ion-content class="padding">
         
         <div class="list">
-            <div class="center item" ng-hide="UserItems.length">You have no items. Add a new one <a href="#/app/add">here.</a></div>
+            <div class="center item" ng-hide="UserItems.length">{{'NoItems'|translate}} <a href="#/app/add">{{'Here'|translate}}</a></div>
             <div class="item row itemRowList" ng-repeat="item in UserItems"> 
                 <div class="col col-20">
 

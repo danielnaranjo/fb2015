@@ -4,7 +4,7 @@
         <div class="buttons">
             <button class="button button-clear" menu-toggle="left"><i class="icon ion-navicon"></i></button>
         </div>
-        <h1 class="title logo">settings</h1>
+        <h1 class="title logo">{{'Settings'|translate}}</h1>
         <div class="buttons">
             <button class="button button-clear" menu-toggle="right"><i class="icon ion-ios-albums-outline"></i></button> 
         </div>
@@ -22,14 +22,14 @@
             </div>
             
             <list class="item item-input item-button-right">
-          <span class="input-label">Select a new location</span>
+          <span class="input-label">{{'NewLocation'|translate}}</span>
           <input type="text" ng-model="userData.location">
             <a class="button button-clear" ng-click="getLocation()">
                 <i class="icon ion-ios-navigate-outline"></i>
             </a>
         </list>
             
-            <h5 class="center">Select profile picture</h5>
+            <h5 class="center">{{'SelectPicture'|translate}}</h5>
             <div class="row selectPictureIcons center">
                 <div class="col borderRight back-1">
                     <i ng-click="getImage()" class="icon ion-images"></i>

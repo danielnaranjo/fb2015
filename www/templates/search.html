@@ -1,6 +1,6 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Search</h1>
+    <h1 class="title">{{'Search'|translate}}</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeSearch()"><i class="icon ion-ios-close-outline"></i></button>
     </div>
@@ -9,14 +9,14 @@
     <form ng-submit="doSearch()">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Terms to search</span>
+          <span class="input-label">{{'TermsOfSearch'|translate}}</span>
           <input type="text" ng-model="searchData.terms">
         </label>
        
         <label class="item">
-          <button class="button button-block button-calm" type="submit">Search</button>
+          <button class="button button-block button-calm" type="submit">{{'Search'|translate}}</button>
         </label>          
-            <a class="button button-clear button-assertive button-block" ng-click="closeSearch()">Close</a>
+            <a class="button button-clear button-assertive button-block" ng-click="closeSearch()">{{'Close'|translate}}</a>
       </div>
     </form>
   </ion-content>

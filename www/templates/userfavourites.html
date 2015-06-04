@@ -5,7 +5,7 @@
             <button class="button button-clear" menu-toggle="left"><i class="icon ion-navicon"></i></button>
             <a class="button button-clear" ng-click="search()"><i class="icon ion-search"></i></a>
         </div>
-        <h1 class="title logo">my favourites</h1>
+        <h1 class="title logo">{{'Myfavourites'|translate}}</h1>
         <div class="buttons">
             <a class="button button-clear" href="#/app/add"><i class="icon ion-ios-plus"></i></a>
             <button class="button button-clear" menu-toggle="right"><i class="icon ion-ios-albums-outline"></i></button> 
@@ -14,7 +14,7 @@
     
     <ion-content class="padding">
         <div class="list">
-            <div class="center item" ng-hide="FavItems.length">You have no favourites.</div>
+            <div class="center item" ng-hide="FavItems.length">{{'NoFavourites'|translate}}</div>
             <div class="item row itemRowList" ng-repeat="item in FavItems"> 
                 <div class="col col-20">
                     <a class="icon ion-ios-eye-outline back-7" href="#/app/item/{{item.id}}"></a>

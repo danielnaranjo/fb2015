@@ -4,7 +4,7 @@
         <div class="buttons">
             <button class="button button-clear" menu-toggle="left"><i class="icon ion-navicon"></i></button>
         </div>
-        <h1 class="title logo">my listings</h1>
+        <h1 class="title logo">{{'MyAds'|translate}}</h1>
         <div class="buttons">
             <button class="button button-clear" menu-toggle="right"><i class="icon ion-ios-albums-outline"></i></button>
         </div>
@@ -18,10 +18,10 @@
                 <div class="col">
                     
                     <label class="item item-input item-floating-label">
-                        <span class="input-label">What do you want to sell?</span>
-                        <input type="text" placeholder="What do you want to sell?" ng-model="item.itemName" name="name" required ng-change="update(itemName)">
+                        <span class="input-label">{{'Whatdoyouwanttosell'|translate}}</span>
+                        <input type="text" placeholder="{{'Whatdoyouwanttosell'|translate}}" ng-model="item.itemName" name="name" required ng-change="update(itemName)">
                             <span class="validError" ng-show="myForm.name.$dirty && myForm.name.$invalid">
-                                <span ng-show="myForm.name.$error.required">Product name is required.</span>
+                                <span ng-show="myForm.name.$error.required">{{'Title'|translate}} {{'IsRequired'|translate}}</span>
                             </span>
                             </label>
                     
@@ -33,14 +33,14 @@
                     
                     <label class="item-input item-select" ng-controller="CategsCtrl">
                         <div class="input-label">
-                            What type of posting is?
+                            {{'Whattypeofpostingis'|translate}}
                         </div>
                         <select ng-model="item.categorySelect" name="category" required>
                             <!-- <option value="">Choose one</option> -->
-                            <option ng-repeat="categ in Categories" value="{{categ.id}}">{{categ.name}}</option>
+                            <option ng-repeat="categ in Categories" value="{{categ.id}}">{{categ.id|translate}}</option>
                         </select>
                         <span class="validError" ng-show="myForm.category.$dirty && myForm.category.$invalid">
-                            <span ng-show="myForm.category.$error.required">Category is required.</span>
+                            <span ng-show="myForm.category.$error.required">{{'Category'|translate}} {{'IsRequired'|translate}}</span>
                         </span>
                     </label>
                     
@@ -51,7 +51,7 @@
             
             <div class="text-center">
                 
-                <h5 class="center">Select a picture (Required)</h5>
+                <h5 class="center">{{'selectpicture'|translate}}</h5>
                 <div class="row selectPictureIcons">
                     <div class="col borderRight back-1">
                         <i ng-click="getImage()" class="icon ion-images"></i>
@@ -70,10 +70,10 @@
                 <div class="col">
                     
                     <label class="item item-input item-floating-label">
-                        <span class="input-label">Price (USD) ?</span>
-                        <input type="tel" placeholder="Price (USD) ?" ng-model="item.itemPrice" name="price" required>
+                        <span class="input-label">{{'Price'|translate}}?</span>
+                        <input type="tel" placeholder="{{'Price'|translate}}?" ng-model="item.itemPrice" name="price" required>
                             <span class="validError" ng-show="myForm.price.$dirty && myForm.price.$invalid">
-                                <span ng-show="myForm.price.$error.required">Price is required.</span>
+                                <span ng-show="myForm.price.$error.required">{{'Price'|translate}} {{'IsRequired'|translate}}.</span>
                             </span>
                             </label>
                     
@@ -85,9 +85,9 @@
                     
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Where are you from?</span>
-                        <input type="text" placeholder="Where are you from?" ng-model="item.location" name="location" required>
+                        <input type="text" placeholder="{{'WhereAreYouFrom'|translate}}" ng-model="item.location" name="location" required>
                             <span class="validError" ng-show="myForm.location.$dirty && myForm.location.$invalid">
-                                <span ng-show="myForm.location.$error.required">Location is required.</span>
+                                <span ng-show="myForm.location.$error.required">{{'Location'|translate}} {{'IsRequired'|translate}}.</span>
                             </span>
                     </label>
                     
@@ -104,10 +104,10 @@
                 <div class="col">
                     
                     <label class="item item-input item-floating-label">
-                        <span class="input-label">Describe in a few words</span>
-                        <textarea type="text" placeholder="Describe in a few words" ng-model="item.itemDescription" name="description" required></textarea>
+                        <span class="input-label">{{'Describe'|translate}}</span>
+                        <textarea type="text" placeholder="{{'Describe'|translate}}" ng-model="item.itemDescription" name="description" required></textarea>
                         <span class="validError" ng-show="myForm.description.$dirty && myForm.description.$invalid">
-                            <span ng-show="myForm.description.$error.required">Description is required.</span>
+                            <span ng-show="myForm.description.$error.required">{{'Description'|translate}} {{'IsRequired'|translate}}.</span>
                         </span>
                     </label>
                     
@@ -119,7 +119,7 @@
                 <div class="col">
                     <label class="item-input item-select">
                         <div class="input-label">
-                            Promote as Featured
+                            Promote as {{'Featured'|translate}}
                             <i class="icon ion-card"></i>
 
                         </div>
@@ -134,7 +134,7 @@
                 <div class="col">
                     <label class="item-input item-select">
                         <div class="input-label">
-                            Promote as Staff picks
+                            Promote as {{'StaffPicks'|translate}}
                             <i class="icon ion-card"></i>
                         </div>
                         <select ng-model="item.staff" name="staff">
@@ -151,10 +151,10 @@
                 <div class="col">
                     
                     <label class="item item-input item-floating-label">
-                        <span class="input-label">Your email address</span>
-                        <input type="email" placeholder="Your email address" ng-model="item.userEmail" name="email" required>
+                        <span class="input-label">{{'YourEmailaddress'|translate}}</span>
+                        <input type="email" placeholder="{{'YourEmailaddress'|translate}}" ng-model="item.userEmail" name="email" required>
                             <span class="validError" ng-show="myForm.email.$dirty && myForm.email.$invalid">
-                                <span ng-show="myForm.email.$error.required">Email is required.</span>
+                                <span ng-show="myForm.email.$error.required">{{'Email'|translate}} {{'IsRequired'|translate}}.</span>
                             </span>
                     </label>
                     
@@ -165,10 +165,10 @@
                 <div class="col">
                     
                     <label class="item item-input item-floating-label">
-                        <span class="input-label">Your phone number</span>
-                        <input type="tel" placeholder="Your phone number" ng-model="item.userTel" required name="phone" required>
+                        <span class="input-label">{{'YourPhoneNumber'|translate}}</span>
+                        <input type="tel" placeholder="{{'YourPhoneNumber'|translate}}" ng-model="item.userTel" required name="phone" required>
                             <span class="validError" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">
-                                <span ng-show="myForm.phone.$error.required">Phone is required.</span>
+                                <span ng-show="myForm.phone.$error.required">{{'Phone'|translate}} {{'IsRequired'|translate}}.</span>
                             </span>
                     </label>
                     
@@ -179,10 +179,10 @@
                 <div class="col">
                     
                     <label class="item item-input item-floating-label">
-                        <span class="input-label">Choose a password</span>
-                        <input type="password" placeholder="Choose a password" ng-model="item.userPassword" required name="password" required>
+                        <span class="input-label">{{'ChoosePassword'|translate}}</span>
+                        <input type="password" placeholder="{{'ChoosePassword'|translate}}" ng-model="item.userPassword" required name="password" required>
                             <span class="validError" ng-show="myForm.password.$dirty && myForm.password.$invalid">
-                                <span ng-show="myForm.password.$error.required">Password is required.</span>
+                                <span ng-show="myForm.password.$error.required">{{'Password'|translate}} {{'IsRequired'|translate}}.</span>
                             </span>
                     </label>
                     
@@ -193,13 +193,13 @@
             <div class="row">
                 <div class="col colSubmit">
                     <button ng-disabled="myForm.$invalid && !currentUser" class="button button-calm button-full" ng-click="send()" ng-hide="!item.itemName && !item.categorySelect.option.selected">
-                        Submit
+                        {{'Submit'|translate}}
                     </button>
                     <button disabled class="button button-calm button-full" ng-show="!item.itemName && !item.categorySelect.option">
-                        Fill form application
+                        {{'CompleteForm'|translate}}
                     </button>
                     <p ng-show="item.featured=='Yes'" class="padding">
-                        <i class="icon ion-card"></i> Some features are pay. You will receive an confirmation email.
+                        <i class="icon ion-card"></i> {{'PremiumExtras'|translate}}
                     </p>
                 </div>
             </div>

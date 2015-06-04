@@ -5,7 +5,7 @@
             <button class="button button-clear" menu-toggle="left"><i class="icon ion-navicon"></i></button>
             <a class="button button-clear" ng-click="search()"><i class="icon ion-search"></i></a>
         </div>
-        <h1 class="title logo">near me</h1>
+        <h1 class="title logo">{{'NearMe'|translate}}</h1>
         <div class="buttons">
             <a class="button button-clear" href="#/app/add"><i class="icon ion-ios-plus"></i></a>
             <button class="button button-clear" menu-toggle="right"><i class="icon ion-ios-albums-outline"></i></button> 
@@ -39,8 +39,9 @@
                      <div ng-non-bindable>
                         <div id="siteNotice"></div>
                           <h5 id="firstHeading" class="firstHeading">{{item.name}}</h5>
+                          <p>{{item.category|translate}}</p>
                           <p>{{item.location}}</p>
-                          <a href="#/app/item/{{item.id}}" class="button button-clear">details <i class="icon ion-ios-arrow-forward"></i> </a>
+                          <a href="#/app/item/{{item.id}}" class="button button-clear">{{'Details'|translate}} <i class="icon ion-ios-arrow-forward"></i> </a>
                           <h1>&nbsp;</h1>
                         <div id="bodyContent">
                           <p></p>

@@ -4,7 +4,7 @@
         <div class="buttons">
             <button class="button button-clear" menu-toggle="left"><i class="icon ion-navicon"></i></button>
         </div>
-        <h1 class="title logo">messages</h1>
+        <h1 class="title logo">{{'Messages'|translate}}</h1>
         <div class="buttons">
             <a class="button button-clear" href="#/app/add"><i class="icon ion-ios-plus"></i></a>
             <button class="button button-clear" menu-toggle="right"><i class="icon ion-ios-albums-outline"></i></button> 
@@ -14,7 +14,7 @@
   <ion-content class="padding" ng-init="getUserComments()">
       
   <div class="list">
-    <div class="center item" ng-hide="Comments.length">You have no messages.</div>
+    <div class="center item" ng-hide="Comments.length">{{'NoMessages'|translate}}</div>
     <a class="item item-icon-right"  ng-repeat="comment in Comments" href="#/app/item/{{comment.id}}">
         <h4>{{comment.itemName}}</h4>
         <p>{{comment.userEmail | limitTo:3}} - {{comment.comment}}</p>

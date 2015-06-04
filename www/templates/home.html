@@ -23,7 +23,7 @@
         <!-- pull to refresh -->
     <div ng-show="featuredItems.length">
         
-        <h4 class="center">Featured</h4>
+        <h4 class="center">{{'Featured'|translate}}</h4>
         
         <a class="back-{{item.background}} itemBox"ng-repeat="item in featuredItems" href="#/app/item/{{item.id}}">
             <div class="price" ng-show="item.price>0">
@@ -36,7 +36,7 @@
                 {{item.location | limitTo:27}}
             </div>
             <div class="title">
-                {{item.name | limitTo:12}}
+                {{item.name | limitTo:15}}
             </div>
         </a>
     </div>
@@ -44,7 +44,7 @@
     
     <div ng-show="staffItems.length">
         
-        <h4 class="center">Staff Picks</h4>
+        <h4 class="center">{{'StaffPicks'|translate}}</h4>
         
         <a class="back-{{item.background}} itemBox"ng-repeat="item in staffItems" href="#/app/item/{{item.id}}">
             <div class="price" ng-show="item.price>0">
@@ -57,7 +57,7 @@
                 {{item.location | limitTo:27}}
             </div>
             <div class="title">
-                {{item.name | limitTo:12}}
+                {{item.name | limitTo:15}}
             </div>
         </a>
         
@@ -66,7 +66,7 @@
     
     <div ng-show="newestItems.length">    
         
-        <h4 class="center">Newest</h4>
+        <h4 class="center">{{'Newest'|translate}}</h4>
         
         <a class="back-{{item.background}} itemBox"ng-repeat="item in newestItems" href="#/app/item/{{item.id}}">
             <div class="price" ng-show="item.price>0">
@@ -79,7 +79,7 @@
                 {{item.location | limitTo:27}}
             </div>
             <div class="title">
-                {{item.name | limitTo:12}}
+                {{item.name | limitTo:15}}
             </div>
         </a>
         

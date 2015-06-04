@@ -1,6 +1,6 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Login</h1>
+    <h1 class="title">{{'LogIn'|translate}}</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeLogin()"><i class="icon ion-ios-close-outline"></i></button>
     </div>
@@ -9,19 +9,19 @@
     <form ng-submit="doLogin()">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Email</span>
+          <span class="input-label">{{'Email'|translate}}</span>
           <input type="email" ng-model="loginData.email">
         </label>
         <label class="item item-input">
-          <span class="input-label">Password</span>
+          <span class="input-label">{{'Password'|translate}}</span>
           <input type="password" ng-model="loginData.password">
         </label>
         <label class="item">
-          <button class="button button-block button-calm" type="submit">Log in</button>
+          <button class="button button-block button-calm" type="submit">{{'Login'|translate}}</button>
         </label>          
-            <a class="center button button-clear button-block" ng-click="reset()">Forgot Password</a>
-            <p class="center">Don't have an account?</p>
-            <a class="button button-clear button-assertive button-block" ng-click="register()">Register</a>
+            <a class="center button button-clear button-block" ng-click="reset()">{{'ForgotPass'|translate}}</a>
+            <p class="center">{{'NewAccount'|translate}}</p>
+            <a class="button button-clear button-assertive button-block" ng-click="register()">{{'RegisterNow'|translate}}</a>
       </div>
     </form>
   </ion-content>

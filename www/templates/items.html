@@ -5,7 +5,10 @@
             <button class="button button-clear" menu-toggle="left"><i class="icon ion-navicon"></i></button>
             <a class="button button-clear" ng-click="search()"><i class="icon ion-search"></i></a>
         </div>
-        <h1 class="title logo">{{categoryName}}</h1>
+        <h1 class="title logo">
+          <!-- {{categoryName}} -->
+          {{id|translate}}
+        </h1>
         <div class="buttons">
             <a class="button button-clear" href="#/app/add"><i class="icon ion-ios-plus"></i></a>
             <button class="button button-clear" menu-toggle="right"><i class="icon ion-ios-albums-outline"></i></button> 
@@ -15,13 +18,11 @@
     <ion-content class="padding">
 
         <div ng-show="!Items.length" class="center padding">
-            <h1>No listings</h1>
-            <h3>for this category</h3>
+            <h1>{{'NoListings'|translate}}</h1>
+            <h3>{{'ThisCategory'|translate}} {{id|translate}}</h3>
             <h1><i class="icon ion-sad-outline"></i></h1>
             <h1>&nbsp;</h1>
-            <h1><a href="#/app/add">Add yours</a></h1>
-            
-            
+            <h1><a href="#/app/add">{{'AddYours'|translate}}</a></h1>
         </div>
         
   <a class="back-{{item.background}} itemBox"ng-repeat="item in Items" href="#/app/item/{{item.id}}">
